@@ -32,7 +32,7 @@ The following figures display how the model performs on the test dataset:
 
 ![Confusion matrix](static/confusion_matrix.png)
 
-Category 1 has a low f1-score of 0.47. This is likely due to the imbalance between the counts of Category 0 and 1 in the original dataset, which is 28253(89%) & 3394(11%) respectively. Imputational methods such as SMOTE might be beneficial to improve the performance of the model.
+Category 1 has a low f1-score of 0.47. This is likely due to the imbalance between the counts of Category 0 and 1 in the original dataset, which is 28253 (89%) & 3394 (11%) respectively. Imputational methods such as SMOTE might be beneficial to improve the performance of the model.
 
 ## Credits
 
