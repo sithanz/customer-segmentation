@@ -10,7 +10,6 @@ import datetime
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import scipy.stats as ss
 import matplotlib.pyplot as plt
 
 from sklearn.impute import KNNImputer
@@ -47,17 +46,18 @@ df.describe().T
 df.isna().sum() #High number of NaN (25831) in days_since_prev_campaign_contact
 df.duplicated().sum() #No duplicates
 df['id'].duplicated().sum() #no duplicated id
+df = df.drop(labels='id', axis=1)
 
-cat_col = ['id','job_type','marital','education','default','housing_loan',
+cat_col = ['job_type','marital','education','default','housing_loan',
            'personal_loan','communication_type','day_of_month','month',
            'num_contacts_in_campaign','num_contacts_prev_campaign',
            'prev_campaign_outcome','term_deposit_subscribed']
 con_col = list(df.drop(labels=cat_col, axis=1).columns)
 
-# for i in cat_col:
-#     plt.figure()
-#     sns.countplot(df[i])
-#     plt.show()
+for i in cat_col:
+    plt.figure()
+    sns.countplot(df[i])
+    plt.show()
     
 for i in con_col:
     plt.figure()
@@ -66,11 +66,11 @@ for i in con_col:
     
 # df.boxplot() 
 # df.boxplot(column='balance') #large range of values & outliers. Negative values present
-df.boxplot(column='last_contact_duration') #outliers present
+# df.boxplot(column='last_contact_duration') #outliers present
 
 #%% Data Cleaning
 
-col_remove = ['id','days_since_prev_campaign_contact']
+col_remove = ['days_since_prev_campaign_contact']
  
 df_clean = df.drop(labels=col_remove, axis=1)
 cat_col = [i for i in cat_col if i not in col_remove]
@@ -208,7 +208,7 @@ disp.plot(cmap=plt.cm.Blues)
 plt.show()
 
 # low f1-score for category 1 - likely due to imbalanced target data 
-# (Category 1 is less than 10% of dataset)
+# (Category 1 is only 10% of dataset)
 
 #%% Save Model
 
