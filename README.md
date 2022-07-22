@@ -28,7 +28,11 @@ As the model trains, the loss and accuracy metrics are displayed using TensorBoa
 
 The following figures display how the model performs on the test dataset:
 
+### Classification report
+
 ![Classification report](static/classification_report.png)
+
+### Confusion matrix
 
 ![Confusion matrix](static/confusion_matrix.png)
 
